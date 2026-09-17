@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.UUID;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import main.java.com.jgunzalesindustries.banco.sahur.dto.response.Rol;
+import main.java.com.jgunzalesindustries.banco.sahur.model.Rol;
 import main.java.com.jgunzalesindustries.banco.sahur.model.User;
 
 
