@@ -10,9 +10,9 @@ package main.java.com.jgunzalesindustries.banco.sahur.model;
  */
 public class Rol {
     private String idRol;
-    private String rol;
+    private int rol;
 
-    public Rol(String idRol, String rol) {
+    public Rol(String idRol, int rol) {
         this.idRol = idRol;
         this.rol = rol;
     }
@@ -21,7 +21,7 @@ public class Rol {
         return idRol;
     }
 
-    public String getRol() {
+    public int getRol() {
         return rol;
     }
 
@@ -29,7 +29,7 @@ public class Rol {
         this.idRol = idRol;
     }
 
-    public void setRol(String rol) {
+    public void setRol(int rol) {
         this.rol = rol;
     }
     
