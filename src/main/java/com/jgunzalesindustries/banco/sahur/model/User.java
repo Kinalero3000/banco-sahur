@@ -1,6 +1,7 @@
 package main.java.com.jgunzalesindustries.banco.sahur.model;
  
 public class User {
+
     private String userID;
     private String name;
     private String lastName;
