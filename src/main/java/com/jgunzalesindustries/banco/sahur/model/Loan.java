@@ -11,9 +11,9 @@ import java.time.LocalDate;
  * @author angel
  */
 public class Loan {
-    private String idPay;
-    private String idFee;
-    private String PayDay;
+    private String idLoan;
+    private String idClient;
+    private int idTypeCredit;
    private Double amount;
    private int interestRate;
    private int thermMonths;
@@ -21,10 +21,10 @@ private LocalDate requestDate;
 private LocalDate approvalDate;
 private String status;
 
-    public Loan(String idPay, String idFee, String PayDay, Double amount, int interestRate, int thermMonths, LocalDate requestDate, LocalDate approvalDate, String status) {
-        this.idPay = idPay;
-        this.idFee = idFee;
-        this.PayDay = PayDay;
+    public Loan(String idLoan, String idClient, int idTypeCredit, Double amount, int interestRate, int thermMonths, LocalDate requestDate, LocalDate approvalDate, String status) {
+        this.idLoan = idLoan;
+        this.idClient = idClient;
+        this.idTypeCredit = idTypeCredit;
         this.amount = amount;
         this.interestRate = interestRate;
         this.thermMonths = thermMonths;
@@ -33,16 +33,16 @@ private String status;
         this.status = status;
     }
 
-    public String getIdPay() {
-        return idPay;
+    public String getIdLoan() {
+        return idLoan;
     }
 
-    public String getIdFee() {
-        return idFee;
+    public String getIdClient() {
+        return idClient;
     }
 
-    public String getPayDay() {
-        return PayDay;
+    public int getidTypeCredit() {
+        return idTypeCredit;
     }
 
     public Double getAmount() {
@@ -69,16 +69,16 @@ private String status;
         return status;
     }
 
-    public void setIdPay(String idPay) {
-        this.idPay = idPay;
+    public void setIdLoan(String idLoan) {
+        this.idLoan = idLoan;
     }
 
-    public void setIdFee(String idFee) {
-        this.idFee = idFee;
+    public void setIdClient(String idClient) {
+        this.idClient = idClient;
     }
 
-    public void setPayDay(String PayDay) {
-        this.PayDay = PayDay;
+    public void setidTypeCredit(int idTypeCredit) {
+        this.idTypeCredit = idTypeCredit;
     }
 
     public void setAmount(Double amount) {
