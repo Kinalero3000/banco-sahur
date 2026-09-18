@@ -4,6 +4,7 @@ package main.java.com.jgunzalesindustries.banco.sahur.repository;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import main.java.com.jgunzalesindustries.banco.sahur.config.DataBaseConnection;
 import main.java.com.jgunzalesindustries.banco.sahur.dto.request.LoginDTORequest;
 import main.java.com.jgunzalesindustries.banco.sahur.dto.response.LoginDTOResponse;
 
@@ -38,4 +39,5 @@ public class AuthRepository{
                     }
         return null;
     }
+}
 

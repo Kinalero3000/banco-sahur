@@ -8,6 +8,6 @@ package main.java.com.jgunzalesindustries.banco.sahur.controller;
  *
  * @author informatica
  */
-public class AuthController {
+public class LoginController {
     
 }
