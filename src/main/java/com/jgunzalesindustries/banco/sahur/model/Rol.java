@@ -9,27 +9,27 @@ package main.java.com.jgunzalesindustries.banco.sahur.model;
  * @author angel
  */
 public class Rol {
-    private String idRol;
-    private int rol;
+    private int idRol;
+    private String rol;
 
-    public Rol(String idRol, int rol) {
+    public Rol(int idRol, String rol) {
         this.idRol = idRol;
         this.rol = rol;
     }
 
-    public String getIdRol() {
+    public int getIdRol() {
         return idRol;
     }
 
-    public int getRol() {
+    public String getRol() {
         return rol;
     }
 
-    public void setIdRol(String idRol) {
+    public void setIdRol(int idRol) {
         this.idRol = idRol;
     }
 
-    public void setRol(int rol) {
+    public void setRol(String rol) {
         this.rol = rol;
     }
     
