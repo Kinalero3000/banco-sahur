@@ -2,16 +2,15 @@ package main.java.com.jgunzalesindustries.banco.sahur.model;
 
 import java.time.LocalDate;
 
-
-    public class Clients {
-        private String IdCliente;
-        private String DPI;
-        private String name;
-        private String lastName;
-        private String phone;
-        private String email;
-        private String address;
-        private LocalDate registerDate;
+public class Clients {
+    private String IdCliente;
+    private String DPI;
+    private String name;
+    private String lastName;
+    private String phone;
+    private String email;
+    private String address;
+    private LocalDate registerDate;
 
     public Clients(String IdCliente, String DPI, String name, String lastName, String phone, String email, String address, LocalDate registerDate) {
         this.IdCliente = IdCliente;
@@ -87,6 +86,5 @@ import java.time.LocalDate;
     public void setRegisterDate(LocalDate registerDate) {
         this.registerDate = registerDate;
     }
-        
-        
-    }
+
+}
