@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.UUID;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import main.java.com.jgunzalesindustries.banco.sahur.dto.response.RolDTOResponse;
 import main.java.com.jgunzalesindustries.banco.sahur.model.Rol;
 import main.java.com.jgunzalesindustries.banco.sahur.model.User;
 
@@ -51,16 +52,16 @@ public class UserRepository {
     }
 
  
-    public ObservableList<Rol> findAllRoles() {
+    public ObservableList<RolDTOResponse> findAllRoles() {
     String sql = "SELECT id_rol, nombre_rol FROM roles;";
 
     try (PreparedStatement pstm = DataBaseConnection.getDataBaseConnection().prepareStatement(sql)) {
 
         ResultSet rs = pstm.executeQuery();
-        ObservableList<Rol> lista = FXCollections.observableArrayList();
+        ObservableList<RolDTOResponse> lista = FXCollections.observableArrayList();
 
         while (rs.next()) {
-            lista.add(new Rol(
+            lista.add(new RolDTOResponse(
                     rs.getInt("id_rol"),
                     rs.getString("nombre_rol")
             ));

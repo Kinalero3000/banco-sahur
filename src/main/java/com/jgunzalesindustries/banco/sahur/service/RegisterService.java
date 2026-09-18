@@ -8,26 +8,26 @@ import main.java.com.jgunzalesindustries.banco.sahur.repository.UserRepository;
 
 
 public class RegisterService {
-     private final UserRepository usuarioRepository;
+     private final UserRepository userRepository;
 
     public RegisterService(UserRepository usuarioRepository) {
-        this.usuarioRepository = usuarioRepository;
+        this.userRepository = usuarioRepository;
     }
 
     public RegisterDTOResponse registrar(RegisterDTORequest request) {
         validarRequest(request);
 
-        if (usuarioRepository.existsByEmail(request.getEmail())) {
+        if (userRepository.existsByEmail(request.getEmail())) {
             throw new IllegalArgumentException("Ya existe un usuario registrado con ese email.");
         }
 
         String contrasenaHash = BCrypt.hashpw(request.getPassword(), BCrypt.gensalt());
-        String idUsuario = usuarioRepository.generarIdUsuario();
+        String idUsuario = userRepository.generarIdUsuario();
 
         User usuario = new User(idUsuario, request.getName(), request.getLastName(),
                 request.getEmail(), contrasenaHash, request.getIdRol());
 
-        boolean guardado = usuarioRepository.save(usuario);
+        boolean guardado = userRepository.save(usuario);
 
         if (!guardado) {
             throw new RuntimeException("No se pudo registrar el usuario.");
