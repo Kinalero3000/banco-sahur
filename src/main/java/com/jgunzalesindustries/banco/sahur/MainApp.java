@@ -1,20 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package main.java.com.jgunzalesindustries.banco.sahur;
 
-/**
- *
- * @author informatica
- */
-public class MainApp {
+import javafx.application.Application;
+import javafx.stage.Stage;
+import main.java.com.jgunzalesindustries.banco.sahur.util.SceneManager;
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+public class MainApp extends Application {
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        SceneManager sceneManager = new SceneManager(primaryStage);
+        sceneManager.showLoginView();
     }
-    
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
 }

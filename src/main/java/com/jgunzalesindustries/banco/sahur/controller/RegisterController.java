@@ -16,10 +16,9 @@ import main.java.com.jgunzalesindustries.banco.sahur.service.RegisterService;
 import main.java.com.jgunzalesindustries.banco.sahur.util.SceneManager;
 
 
-public class RegisterController {
-    
-public class RegistroController implements Initializable{
-     private final RegisterService registerService;
+public class RegisterController implements Initializable {
+
+    private final RegisterService registerService;
     private final SceneManager sceneManager;
     private final UserRepository userRepository;
     @FXML
@@ -35,16 +34,16 @@ public class RegistroController implements Initializable{
     @FXML
     private ComboBox<RolDTOResponse> comboBoxRol;
 
-     public RegistroController(RegisterService registerService, SceneManager sceneManager, UserRepository usuarioRepository) {
+    public RegisterController(RegisterService registerService, SceneManager sceneManager, UserRepository usuarioRepository) {
         this.registerService = registerService;
         this.sceneManager = sceneManager;
         this.userRepository = usuarioRepository;
     }
 
-  @Override
-public void initialize(URL url, ResourceBundle rb) {
-    comboBoxRol.setItems(userRepository.findAllRoles());
-}
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        comboBoxRol.setItems(userRepository.findAllRoles());
+    }
 
     public void handleRegistro(ActionEvent event) {
         try {
@@ -70,13 +69,10 @@ public void initialize(URL url, ResourceBundle rb) {
             sceneManager.showAlertInfo("Error", "Error al registrar", "No se pudo completar el registro.", AlertType.ERROR);
         }
     }
-    
-    public void handleIrALogin() throws Exception{
 
-             sceneManager.showLoginView();
-       
-    
-    };
+    public void handleIrALogin() throws Exception {
+        sceneManager.showLoginView();
+    }
 
     public void handleLimpiarCampos() {
         txtFieldName.clear();
@@ -87,4 +83,4 @@ public void initialize(URL url, ResourceBundle rb) {
         comboBoxRol.setValue(null);
     }
 }
-}
+
