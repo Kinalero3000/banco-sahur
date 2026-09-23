@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" styleClass="root" stylesheets="@../css/formulary-design.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Pane layoutX="236.0" prefHeight="720.0" prefWidth="808.0" styleClass="container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="236.0" AnchorPane.rightAnchor="236.0" AnchorPane.topAnchor="0.0">
+            <children>
+
+                 <Label layoutX="323.0" layoutY="180.0" styleClass="title" text="Iniciar sesión" />
+
+                 <TextField fx:id="txtFieldEmail" layoutX="273.0" layoutY="323.0" prefHeight="40.0" prefWidth="272.0" promptText="Tucorreo@gmail..." styleClass="field" />
+
+                 <PasswordField fx:id="txtFieldPassword" layoutX="273.0" layoutY="403.0" prefHeight="40.0" prefWidth="272.0" promptText="contraseñasegura..." styleClass="field" />
+
+                 <Button fx:id="btnIniciarSesion" layoutX="331.0" layoutY="568.0" onAction="#handleLogin" styleClass="btn-primary" stylesheets="@../css/button-design.css" text="Iniciar sesión" />
+
+                 <Hyperlink layoutX="308.0" layoutY="646.0" onAction="#handleIrARegistro" styleClass="link" text="¿No tienes cuenta? Regístrate" />
+            <ImageView fitHeight="166.0" fitWidth="208.0" layoutX="323.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" styleClass="logo">
+               <image>
+                  <Image url="@../images/logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="283.0" layoutY="301.0" styleClass="label-campos" text="Correo" />
+            <Label layoutX="283.0" layoutY="381.0" styleClass="label-campos" text="Contraseña" />
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>

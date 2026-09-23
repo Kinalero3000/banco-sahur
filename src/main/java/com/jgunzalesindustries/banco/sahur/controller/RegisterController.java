@@ -58,7 +58,7 @@ public class RegisterController implements Initializable {
 
             RegisterDTOResponse response = registerService.registrar(request);
 
-            sceneManager.showAlertInfo("Registro exitoso", "Bienvenido " + response.getNombre(),
+            sceneManager.showAlertInfo("Registro exitoso", "Bienvenido " + response.getName(),
                     "Tu cuenta fue creada correctamente.", AlertType.INFORMATION);
             handleLimpiarCampos();
             sceneManager.showLoginView();
