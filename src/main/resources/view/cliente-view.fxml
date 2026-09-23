@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="main.java.com.jgunzalesindustries.banco.sahur.controller.ClienteController">
+    <top>
+        <Label text="Gestión de Clientes" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-padding: 10;"/>
+    </top>
+
+    <left>
+        <VBox spacing="10" style="-fx-padding: 15;">
+            <GridPane hgap="8" vgap="8">
+                <Label text="DPI:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="dpiField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label text="Nombre:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="firstNameField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label text="Apellido:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="lastNameField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                <Label text="Teléfono:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <TextField fx:id="phoneField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                <Label text="Correo:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <TextField fx:id="emailField" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+                <Label text="Dirección:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                <TextField fx:id="addressField" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <HBox spacing="10">
+                <Button text="Guardar" onAction="#onSave"/>
+                <Button text="Eliminar" onAction="#onDelete"/>
+                <Button text="Limpiar" onAction="#onClear"/>
+            </HBox>
+
+            <Label fx:id="statusLabel" wrapText="true" style="-fx-text-fill: #b00020;"/>
+        </VBox>
+    </left>
+
+    <center>
+        <TableView fx:id="clienteTable">
+            <columns>
+                <TableColumn fx:id="dpiColumn" text="DPI" prefWidth="110"/>
+                <TableColumn fx:id="firstNameColumn" text="Nombre" prefWidth="120"/>
+                <TableColumn fx:id="lastNameColumn" text="Apellido" prefWidth="120"/>
+                <TableColumn fx:id="phoneColumn" text="Teléfono" prefWidth="100"/>
+                <TableColumn fx:id="emailColumn" text="Correo" prefWidth="160"/>
+            </columns>
+            <BorderPane.margin>
+                <Insets top="15" right="15" bottom="15" left="0"/>
+            </BorderPane.margin>
+        </TableView>
+    </center>
+</BorderPane>
