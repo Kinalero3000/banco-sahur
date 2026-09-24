@@ -2,7 +2,6 @@
 /build/
 /dist/
 /nbproject/private/
-/nbproject/project.properties
 
 #clases autogeneradas
 *.class

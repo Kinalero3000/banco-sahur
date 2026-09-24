@@ -3,10 +3,9 @@ package main.java.com.jgunzalesindustries.banco.sahur.config;
 
 
 public class Credentials {
-    public static final String URL_DB = "jdbc:mysql://localhost:3306/banco_sahur_in4bv";
-    public static final String USER_DB = "IN4BV";
-    public static final String PASS_DB = "%IndiVA4";
-    
+    public static final String URL_DB = System.getenv("URL_DB");
+    public static final String USER_DB = System.getenv("USER_DB");
+    public static final String PASS_DB = System.getenv("PASS_DB");
 }
 
 
