@@ -7,20 +7,20 @@ import java.sql.SQLException;
 public class DataBaseConnection {
     //atributos
     private static Connection connection;
-    
+
     /*constructor
     El constructor tiene que ser privado, porque NO permite que la clase sea instanciada
     */
-    
-    private DataBaseConnection(){
-    
+
+    private DataBaseConnection() {
+
     };
-    
-    //método 
-    public static Connection getDataBaseConnection() throws SQLException{
-        if(connection == null || connection.isClosed()){
+
+    //método
+    public static Connection getDataBaseConnection() throws SQLException {
+        if (connection == null || connection.isClosed()) {
             connection = DriverManager.getConnection(Credentials.URL_DB, Credentials.USER_DB, Credentials.PASS_DB);
         }
-        return connection; 
+        return connection;
     }
 }
