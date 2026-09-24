@@ -1,0 +1,376 @@
+/* =========================================================
+   DASHBOARD - ESTILO GENERAL
+   ========================================================= */
+
+/* Fondo general */
+.root {
+    -fx-background-color: #0C489C;
+}
+
+
+.dashboard-container {
+    -fx-background-color: #F4F8FC;
+
+    -fx-background-radius: 22px;
+
+    -fx-border-radius: 22px;
+
+    -fx-padding: 20px;
+}
+
+.sidebar {
+    -fx-background-color: #0C489C;
+
+    -fx-padding: 20px 14px;
+}
+
+
+/* Logo / nombre del banco */
+.sidebar-title {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 21px;
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #FFFFFF;
+}
+
+
+/* Texto secundario del sidebar */
+.sidebar-subtitle {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 12px;
+
+    -fx-text-fill: #DCE9F8;
+}
+
+
+/* =========================================================
+   TÍTULOS DEL DASHBOARD
+   ========================================================= */
+
+.dashboard-title {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #12355B;
+}
+
+
+.dashboard-subtitle {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 13px;
+
+    -fx-text-fill: #64748B;
+}
+
+
+/* =========================================================
+   ÁREA PRINCIPAL
+   ========================================================= */
+
+.dashboard-content {
+    -fx-background-color: #F4F8FC;
+
+    -fx-padding: 24px;
+}
+
+
+/* =========================================================
+   PANE / CONTENEDOR DE SECCIONES
+   ========================================================= */
+
+.dashboard-pane {
+    -fx-background-color: #FFFFFF;
+
+    -fx-background-radius: 14px;
+
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 14px;
+
+    -fx-padding: 18px;
+
+    -fx-effect: dropshadow(
+        gaussian,
+        rgba(15, 23, 42, 0.08),
+        10,
+        0.10,
+        0,
+        3
+    );
+}
+
+
+/* =========================================================
+   TÍTULO DE UNA SECCIÓN
+   ========================================================= */
+
+.section-title {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #12355B;
+}
+
+
+/* =========================================================
+   LABELS
+   ========================================================= */
+
+.dashboard-label {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #334155;
+}
+
+
+/* =========================================================
+   TEXTFIELDS DEL DASHBOARD
+   ========================================================= */
+
+.dashboard-field {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 14px;
+
+    -fx-text-fill: #202428;
+    -fx-prompt-text-fill: #94A3B8;
+
+    -fx-background-color: #FFFFFF;
+
+    -fx-border-color: #CBD5E1;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+
+    -fx-background-radius: 8px;
+
+    -fx-padding: 9px 12px;
+}
+
+
+.dashboard-field:focused {
+    -fx-border-color: #0C489C;
+    -fx-border-width: 2px;
+
+    -fx-effect: dropshadow(
+        gaussian,
+        rgba(12, 72, 156, 0.15),
+        5,
+        0.15,
+        0,
+        0
+    );
+}
+
+
+/* =========================================================
+   COMBOBOX DEL DASHBOARD
+   ========================================================= */
+
+.dashboard-combo {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 14px;
+
+    -fx-text-fill: #202428;
+
+    -fx-background-color: #FFFFFF;
+
+    -fx-border-color: #CBD5E1;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+
+    -fx-background-radius: 8px;
+
+    -fx-cursor: hand;
+}
+
+
+.dashboard-combo:focused {
+    -fx-border-color: #0C489C;
+    -fx-border-width: 2px;
+}
+
+
+/* =========================================================
+   TABLEVIEW
+   ========================================================= */
+
+.dashboard-table {
+    -fx-background-color: #FFFFFF;
+
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+
+    -fx-background-radius: 10px;
+
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 13px;
+}
+
+
+/* =========================================================
+   ENCABEZADO DE LA TABLA
+   ========================================================= */
+
+.dashboard-table .column-header-background {
+    -fx-background-color: #0C489C;
+
+    -fx-background-radius: 9px 9px 0 0;
+}
+
+
+/* Encabezado individual */
+
+.dashboard-table .column-header {
+    -fx-background-color: transparent;
+
+    -fx-border-color: rgba(255, 255, 255, 0.15);
+    -fx-border-width: 0 1px 0 0;
+}
+
+
+/* Texto de las columnas */
+
+.dashboard-table .column-header .label {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #FFFFFF;
+
+    -fx-alignment: CENTER;
+}
+
+
+/* =========================================================
+   CELDAS
+   ========================================================= */
+
+.dashboard-table .table-cell {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 13px;
+
+    -fx-text-fill: #334155;
+
+    -fx-border-color: transparent;
+    -fx-padding: 9px 10px;
+
+    -fx-alignment: CENTER-LEFT;
+}
+
+
+/* =========================================================
+   FILAS
+   ========================================================= */
+
+.dashboard-table .table-row-cell {
+    -fx-background-color: #FFFFFF;
+
+    -fx-border-color: transparent transparent #E2E8F0 transparent;
+    -fx-border-width: 0 0 1px 0;
+}
+
+
+/* Filas alternas */
+
+.dashboard-table .table-row-cell:odd {
+    -fx-background-color: #F8FAFC;
+}
+
+
+/* Hover */
+
+.dashboard-table .table-row-cell:hover {
+    -fx-background-color: #E8F1FA;
+}
+
+
+/* Fila seleccionada */
+
+.dashboard-table .table-row-cell:selected {
+    -fx-background-color: #DCE9F8;
+}
+
+
+.dashboard-table .table-row-cell:selected .table-cell {
+    -fx-text-fill: #12355B;
+}
+
+
+/* =========================================================
+   SCROLLBAR DE TABLEVIEW
+   ========================================================= */
+
+.dashboard-table .scroll-bar:vertical,
+.dashboard-table .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+
+.dashboard-table .scroll-bar .thumb {
+    -fx-background-color: #B8C7D9;
+
+    -fx-background-radius: 10px;
+}
+
+
+.dashboard-table .scroll-bar .thumb:hover {
+    -fx-background-color: #0C489C;
+}
+
+
+/* =========================================================
+   SELECCIÓN / FOCUS DE TABLEVIEW
+   ========================================================= */
+
+.dashboard-table:focused {
+    -fx-border-color: #B8CCE3;
+}
+
+
+/* =========================================================
+   TARJETAS DE INFORMACIÓN
+   ========================================================= */
+
+.dashboard-card {
+    -fx-background-color: #FFFFFF;
+
+    -fx-background-radius: 14px;
+
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 14px;
+
+    -fx-padding: 18px;
+
+    -fx-effect: dropshadow(
+        gaussian,
+        rgba(15, 23, 42, 0.07),
+        10,
+        0.10,
+        0,
+        3
+    );
+}
+
+
+.card-title {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #64748B;
+}
+
+
+.card-value {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #12355B;
+}

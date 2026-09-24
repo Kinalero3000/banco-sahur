@@ -1,10 +1,10 @@
 package main.java.com.jgunzalesindustries.banco.sahur.service;
 
-import main.java.com.jgunzalesindustries.abarroteria.kinal.security.jbcrypt.BCrypt;
 import main.java.com.jgunzalesindustries.banco.sahur.dto.request.RegisterDTORequest;
 import main.java.com.jgunzalesindustries.banco.sahur.dto.response.RegisterDTOResponse;
 import main.java.com.jgunzalesindustries.banco.sahur.model.User;
 import main.java.com.jgunzalesindustries.banco.sahur.repository.UserRepository;
+import main.java.com.jgunzalesindustries.banco.sahur.security.jbcrypt.BCrypt;
 
 
 public class RegisterService {

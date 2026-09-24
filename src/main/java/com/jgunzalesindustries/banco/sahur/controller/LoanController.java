@@ -62,7 +62,7 @@ public class LoanController implements Initializable {
 
     private void loadLoanData() {
         try {
-            tblLoans.setItems(loanService.getA);
+            tblLoans.setItems(loanService.getAllLoans());
         } catch (Exception e) {
             showAlert(Alert.AlertType.ERROR, "Error de Carga", "No se pudieron obtener los registros: " + e.getMessage());
         }
