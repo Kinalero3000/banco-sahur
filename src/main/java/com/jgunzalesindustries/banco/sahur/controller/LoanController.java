@@ -9,6 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -21,6 +22,7 @@ import main.java.com.jgunzalesindustries.banco.sahur.dto.response.ClienteDTOResp
 import main.java.com.jgunzalesindustries.banco.sahur.model.Loan;
 import main.java.com.jgunzalesindustries.banco.sahur.service.ClienteService;
 import main.java.com.jgunzalesindustries.banco.sahur.service.LoanService;
+import main.java.com.jgunzalesindustries.banco.sahur.util.SceneManager;
 
 
 public class LoanController implements Initializable {
@@ -61,6 +63,7 @@ public class LoanController implements Initializable {
 
     private final LoanService loanService = new LoanService();
     private final ClienteService clienteService = new ClienteService();
+    private final SceneManager sceneManager;
 
     /**
      * Si no es null, la vista se abre en modo solo-lectura, mostrando
@@ -72,16 +75,18 @@ public class LoanController implements Initializable {
     private Loan selectedLoan;
 
     /** Constructor por defecto: vista completa (trabajador/admin), sin restricciones. */
-    public LoanController() {
-        this(null);
+    public LoanController(SceneManager sceneManager) {
+        this(sceneManager, null);
     }
 
     /**
+     * @param sceneManager permite navegar de vuelta al dashboard.
      * @param restrictedClientEmail correo del usuario logeado cuando debe verse
      *                               solo-lectura y filtrado a sus propios préstamos;
      *                               null para la vista completa de trabajador/admin.
      */
-    public LoanController(String restrictedClientEmail) {
+    public LoanController(SceneManager sceneManager, String restrictedClientEmail) {
+        this.sceneManager = sceneManager;
         this.restrictedClientEmail = restrictedClientEmail;
     }
 
@@ -335,5 +340,15 @@ public class LoanController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(content);
         alert.showAndWait();
+    }
+    
+    @FXML
+    private void handleVolverDashboard() {
+        try {
+            sceneManager.showDashBoardView();
+        } catch (Exception e) {
+            showAlert(Alert.AlertType.ERROR, "Error de Navegación",
+                    "No se pudo cargar el Dashboard: " + e.getMessage());
+        }
     }
 }

@@ -205,6 +205,16 @@ public class UserController implements Initializable {
         tableUsers.getSelectionModel().clearSelection();
     }
 
+    @FXML
+    public void handleVolverDashboard() {
+        try {
+            sceneManager.showDashBoardView();
+        } catch (Exception e) {
+            sceneManager.showAlertInfo("Error", "No se pudo volver al Dashboard",
+                    e.getMessage(), AlertType.ERROR);
+        }
+    }
+
     private void cargarFormulario(User user) {
         txtFieldName.setText(user.getName());
         txtFieldLastName.setText(user.getLastName());

@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane prefHeight="720.0" prefWidth="1280.0" styleClass="root" stylesheets="@../css/dashboard-design.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.jgunzalesindustries.banco.sahur.controller.ClienteController">
+<Pane prefHeight="720.0" prefWidth="1280.0" styleClass="root" stylesheets="@../css/dashboard-design.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.jgunzalesindustries.banco.sahur.controller.ClienteController">
 
     <BorderPane layoutX="56.0" layoutY="0" prefHeight="720.0" prefWidth="1172.0" styleClass="dashboard-container">
         <top>
@@ -63,17 +63,19 @@
                 </HBox>
 
                 <Label fx:id="statusLabel" style="-fx-text-fill: #b00020; -fx-font-size: 13px;" wrapText="true" />
+            <Button mnemonicParsing="false" onAction="#handleVolverDashboard" styleClass="btn-primary" stylesheets="@../css/button-design.css" text="Volver" />
             </VBox>
         </left>
 
         <center>
             <TableView fx:id="clienteTable" style="-fx-font-size: 14px;" styleClass="dashboard-table">
                 <columns>
-                    <TableColumn fx:id="dpiColumn" prefWidth="110" text="DPI" />
-                    <TableColumn fx:id="firstNameColumn" prefWidth="120" text="Nombre" />
+                    <TableColumn fx:id="dpiColumn" prefWidth="105.0" text="DPI" />
+                    <TableColumn fx:id="firstNameColumn" prefWidth="100.0" text="Nombre" />
                     <TableColumn fx:id="lastNameColumn" prefWidth="120" text="Apellido" />
-                    <TableColumn fx:id="phoneColumn" prefWidth="100" text="Teléfono" />
-                    <TableColumn fx:id="emailColumn" prefWidth="160" text="Correo" />
+                    <TableColumn fx:id="phoneColumn" prefWidth="130.0" text="Teléfono" />
+                    <TableColumn fx:id="emailColumn" prefWidth="140.0" text="Correo" />
+               <TableColumn fx:id="idColumn" prefWidth="112.0" text="Id" />
                 </columns>
                 <BorderPane.margin>
                     <Insets bottom="15" left="0" right="15" top="15" />

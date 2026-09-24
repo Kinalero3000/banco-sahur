@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import main.java.com.jgunzalesindustries.banco.sahur.controller.LoginController;
 import main.java.com.jgunzalesindustries.banco.sahur.controller.RegisterController;
 import main.java.com.jgunzalesindustries.banco.sahur.controller.DashboardController;
+import main.java.com.jgunzalesindustries.banco.sahur.controller.ClienteController;
 import main.java.com.jgunzalesindustries.banco.sahur.controller.LoanController;
 import main.java.com.jgunzalesindustries.banco.sahur.controller.UserController;
 import main.java.com.jgunzalesindustries.banco.sahur.repository.AuthRepository;
@@ -25,6 +26,11 @@ public class SceneManager {
     private static final String VIEW_PATH = "/main/resources/view/";
 
     private final Stage stage;
+
+    // Rol/correo del usuario logeado en la sesión actual, para poder
+    // volver al dashboard desde cualquier vista sin tener que repasarlos.
+    private String currentRolName;
+    private String currentUserEmail;
 
     public SceneManager(Stage stage) {
         this.stage = stage;
@@ -45,37 +51,33 @@ public class SceneManager {
         loadScene("register-view.fxml", controller, "Banco Sahur - Registro");
     }
 
-    /**
-     * Muestra el dashboard principal, ya con el rol y el correo del usuario
-     * que inició sesión, para que el DashboardController pueda decidir
-     * qué botones/secciones mostrar.
-     *
-     * @param rolName   nombre del rol devuelto por el login (ej. "Cliente", "Trabajador", "Admin").
-     * @param userEmail correo con el que el usuario inició sesión.
-     */
     public void showDashBoardView(String rolName, String userEmail) throws IOException {
+        this.currentRolName = rolName;
+        this.currentUserEmail = userEmail;
         DashboardController controller = new DashboardController(this, rolName, userEmail);
         loadScene("dashboard-view.fxml", controller, "Banco Sahur - Dashboard");
     }
 
-    public void showClienteView() throws IOException {
-        // cliente-view.fxml ya trae su propio fx:controller declarado,
-        // así que se carga sin inyectar controller manualmente.
-        loadSelfControlledScene("cliente-view.fxml", "Banco Sahur - Clientes");
+    /** Vuelve al dashboard reusando el rol/correo de la sesión actual. */
+    public void showDashBoardView() throws IOException {
+        showDashBoardView(currentRolName, currentUserEmail);
     }
 
-    /**
-     * Muestra la vista de préstamos.
-     *
-     * @param restrictToClientEmail si es null, se muestra la vista completa (alta/edición/
-     *                               aprobación) para trabajadores/admin. Si trae un correo,
-     *                               la vista se abre en modo solo-lectura filtrada a los
-     *                               préstamos del cliente asociado a ese correo.
-     */
+    public void showClienteView() throws IOException {
+        // cliente-view.fxml ya trae su propio fx:controller declarado,
+        // así que se carga sin inyectar controller manualmente. Después
+        // de cargarlo, le inyectamos el SceneManager por setter para que
+        // pueda volver al dashboard.
+        loadSelfControlledScene("cliente-view.fxml", "Banco Sahur - Clientes", controller -> {
+            if (controller instanceof ClienteController clienteController) {
+                clienteController.setSceneManager(this);
+            }
+        });
+    }
+
     public void showLoanView(String restrictToClientEmail) throws IOException {
-        // loan-view.fxml no trae fx:controller, así que se instancia
-        // LoanController manualmente.
-        LoanController controller = new LoanController(restrictToClientEmail);
+
+        LoanController controller = new LoanController(this, restrictToClientEmail);
         String titulo = restrictToClientEmail != null
                 ? "Banco Sahur - Mis Préstamos"
                 : "Banco Sahur - Préstamos";
@@ -99,8 +101,13 @@ public class SceneManager {
     }
 
     private void loadSelfControlledScene(String fxmlFile, String title) throws IOException {
+        loadSelfControlledScene(fxmlFile, title, controller -> { });
+    }
+
+    private void loadSelfControlledScene(String fxmlFile, String title, java.util.function.Consumer<Object> afterLoad) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(VIEW_PATH + fxmlFile));
         Parent root = loader.load();
+        afterLoad.accept(loader.getController());
         renderScene(root, title);
     }
 

@@ -10,10 +10,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #16305F;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #16305F;" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
 
-      <Pane layoutX="63.0" prefHeight="720.0" prefWidth="1162.0" style="-fx-background-color: #F7FAFD;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="63.0" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="0.0">
+      <Pane layoutX="63.0" prefHeight="720.0" prefWidth="1162.0" style="-fx-background-color: #F7FAFD;" styleClass="dashboard-container" stylesheets="@../css/dashboard-design.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="63.0" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="0.0">
          <children>
 
             <Label layoutX="40.0" layoutY="20.0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #16305F;" text="Gestión de Usuarios" />
@@ -35,7 +35,7 @@
             <PasswordField fx:id="txtFieldConfirmPassword" layoutX="40.0" layoutY="340.0" prefWidth="230.0" promptText="Confirmar contraseña" style="-fx-background-color: #EEF3FA; -fx-background-radius: 10; -fx-border-color: #1E4E8C; -fx-border-radius: 10; -fx-padding: 6;" />
 
             <Label layoutX="40.0" layoutY="380.0" style="-fx-font-weight: bold; -fx-text-fill: #16305F;" text="Rol" />
-            <ComboBox fx:id="comboBoxRol" layoutX="40.0" layoutY="400.0" prefWidth="230.0" promptText="Selecciona un rol" />
+            <ComboBox fx:id="comboBoxRol" layoutX="40.0" layoutY="400.0" prefWidth="230.0" promptText="Selecciona un rol" styleClass="dashboard-combo" />
 
             <!-- Botones -->
             <Button fx:id="btnAgregar" layoutX="40.0" layoutY="450.0" mnemonicParsing="false" onAction="#handleAgregar" prefWidth="105.0" style="-fx-background-color: #16305F; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10;" text="Agregar" />
@@ -47,7 +47,7 @@
             <Button fx:id="btnMostrarTodos" layoutX="40.0" layoutY="530.0" mnemonicParsing="false" onAction="#handleMostrarTodos" prefWidth="230.0" style="-fx-background-color: #16305F; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10;" text="Mostrar Todos" />
 
             <!-- Tabla -->
-            <TableView fx:id="tableUsers" layoutX="320.0" layoutY="78.0" prefHeight="602.0" prefWidth="827.0">
+            <TableView fx:id="tableUsers" layoutX="320.0" layoutY="78.0" prefHeight="602.0" prefWidth="827.0" styleClass="dashboard-table" stylesheets="@../css/dashboard-design.css">
               <columns>
                 <TableColumn fx:id="colUserID" prefWidth="180.0" text="ID Usuario" />
                 <TableColumn fx:id="colName" prefWidth="150.0" text="Nombre" />
@@ -59,6 +59,7 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
+            <Button layoutX="102.0" layoutY="660.0" mnemonicParsing="false" onAction="#handleVolverDashboard" styleClass="btn-primary" stylesheets="@../css/button-design.css" text="Volver" />
 
          </children>
       </Pane>
