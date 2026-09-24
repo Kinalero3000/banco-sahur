@@ -51,9 +51,73 @@ public class UserRepository {
         return UUID.randomUUID().toString();
     }
 
+    // Alias en inglés para UserService, sin tocar generarIdUsuario()
+    // porque RegisterService ya depende de ese nombre.
+    public String generateUserId() {
+        return generarIdUsuario();
+    }
+
+    public ObservableList<User> findAll() {
+        String sql = "SELECT id_usuario, nombre, apellido, email, contrasena_hash, id_rol FROM usuarios;";
+        ObservableList<User> lista = FXCollections.observableArrayList();
+
+        try (PreparedStatement pstm = DataBaseConnection.getDataBaseConnection().prepareStatement(sql)) {
+
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                lista.add(new User(
+                        rs.getString("id_usuario"),
+                        rs.getString("nombre"),
+                        rs.getString("apellido"),
+                        rs.getString("email"),
+                        rs.getString("contrasena_hash"),
+                        rs.getInt("id_rol")
+                ));
+            }
+            return lista;
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al consultar los usuarios.", e);
+        }
+    }
+
+    public boolean update(User user) {
+        String sql = "UPDATE usuarios SET nombre = ?, apellido = ?, email = ?, contrasena_hash = ?, id_rol = ? WHERE id_usuario = ?;";
+
+        try (PreparedStatement pstm = DataBaseConnection.getDataBaseConnection().prepareStatement(sql)) {
+
+            pstm.setString(1, user.getName());
+            pstm.setString(2, user.getLastName());
+            pstm.setString(3, user.getEmail());
+            pstm.setString(4, user.getPasswordHash());
+            pstm.setInt(5, user.getRolID());
+            pstm.setString(6, user.getUserID());
+
+            int filasAfectadas = pstm.executeUpdate();
+            return filasAfectadas > 0;
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al actualizar el usuario en la base de datos.", e);
+        }
+    }
+
+    public boolean delete(String userId) {
+        String sql = "DELETE FROM usuarios WHERE id_usuario = ?;";
+
+        try (PreparedStatement pstm = DataBaseConnection.getDataBaseConnection().prepareStatement(sql)) {
+
+            pstm.setString(1, userId);
+            int filasAfectadas = pstm.executeUpdate();
+            return filasAfectadas > 0;
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al eliminar el usuario de la base de datos.", e);
+        }
+    }
+
  
     public ObservableList<RolDTOResponse> findAllRoles() {
-    String sql = "SELECT id_rol, nombre_rol FROM roles;";
+    String sql = "SELECT id_rol, rol FROM roles;";
 
     try (PreparedStatement pstm = DataBaseConnection.getDataBaseConnection().prepareStatement(sql)) {
 
@@ -63,7 +127,7 @@ public class UserRepository {
         while (rs.next()) {
             lista.add(new RolDTOResponse(
                     rs.getInt("id_rol"),
-                    rs.getString("nombre_rol")
+                    rs.getString("rol")
             ));
         }
 
@@ -74,4 +138,3 @@ public class UserRepository {
     }
 }
 }
- 

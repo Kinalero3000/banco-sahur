@@ -6,10 +6,6 @@ import java.time.LocalDate;
 import main.java.com.jgunzalesindustries.banco.sahur.model.Loan;
 import main.java.com.jgunzalesindustries.banco.sahur.repository.LoanRepository;
 
-/**
- * Capa de servicio: contiene las reglas de negocio para los préstamos.
- * No conoce nada de JavaFX/UI ni de SQL: solo valida y coordina llamadas al repositorio.
- */
 public class LoanService {
 
     private final LoanRepository loanRepository;
@@ -22,7 +18,6 @@ public class LoanService {
         this.loanRepository = loanRepository;
     }
 
-    // ---------- READ ----------
 
     public ObservableList<Loan> getAllLoans() {
         return loanRepository.findAll();
@@ -32,17 +27,9 @@ public class LoanService {
         return findByIdOrThrow(idLoan);
     }
 
-    // ---------- CREATE ----------
 
     public boolean applyForLoan(Loan loan) {
         validateLoan(loan);
-
-        if (loan.getIdLoan() == null || loan.getIdLoan().isBlank()) {
-            throw new IllegalArgumentException("El ID del préstamo es obligatorio.");
-        }
-        if (loanRepository.existsById(loan.getIdLoan())) {
-            throw new IllegalArgumentException("Ya existe un préstamo con ID: " + loan.getIdLoan());
-        }
 
         loan.setStatus("Pendiente");
         loan.setRequestDate(LocalDate.now());
@@ -51,7 +38,6 @@ public class LoanService {
         return loanRepository.save(loan);
     }
 
-    // ---------- UPDATE (edición general de datos) ----------
 
     public boolean updateLoan(Loan loan) {
         if (loan.getIdLoan() == null || loan.getIdLoan().isBlank()) {
@@ -65,7 +51,6 @@ public class LoanService {
         return loanRepository.update(loan);
     }
 
-    // ---------- UPDATE (transiciones de estado) ----------
 
     public boolean approveLoan(String idLoan) {
         Loan loan = findByIdOrThrow(idLoan);
@@ -87,7 +72,6 @@ public class LoanService {
         return loanRepository.update(loan);
     }
 
-    // ---------- DELETE ----------
 
     public boolean deleteLoan(String idLoan) {
         if (idLoan == null || idLoan.isBlank()) {
@@ -99,7 +83,6 @@ public class LoanService {
         return loanRepository.deleteById(idLoan);
     }
 
-    // ---------- Helpers privados ----------
 
     private void validateLoan(Loan loan) {
         if (loan == null) {
