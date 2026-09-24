@@ -14,15 +14,15 @@ import main.java.com.jgunzalesindustries.banco.sahur.model.Loan;
 public class LoanRepository {
  
     public ObservableList<Loan> findAll() {
-        String sql = "SELECT * FROM loans;";
+        String sql = "SELECT * FROM pre;";
         ObservableList<Loan> list = FXCollections.observableArrayList();
  
         try (PreparedStatement pstm = DataBaseConnection.getDataBaseConnection().prepareStatement(sql)) {
             ResultSet rs = pstm.executeQuery();
  
             while (rs.next()) {
-                LocalDate requestDate = rs.getDate("request_date") != null ? rs.getDate("request_date").toLocalDate() : null;
-                LocalDate approvalDate = rs.getDate("approval_date") != null ? rs.getDate("approval_date").toLocalDate() : null;
+                LocalDate requestDate = rs.getDate("fecha_solicitud") != null ? rs.getDate("fecha_solicitud").toLocalDate() : null;
+                LocalDate approvalDate = rs.getDate("fecha_aprobacion") != null ? rs.getDate("fecha_aprobacion").toLocalDate() : null;
  
                 list.add(new Loan(
                         rs.getString("id_prestamo"),
@@ -55,7 +55,7 @@ public class LoanRepository {
     }
  
     public boolean save(Loan loan) {
-        String sql = "INSERT INTO prestamo (id_prestamo, id_cliente, id_tipo_credito, , monto, tasa_interes, plazo_meses, fecha_solicitud, fecha_aprobacion, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO prestamo (id_prestamo, id_cliente, id_tipo_credito, , monto, tasa_interes, plazo_meses, fecha_solicitud, fecha_aprobacion, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
  
         try (PreparedStatement pstm = DataBaseConnection.getDataBaseConnection().prepareStatement(sql)) {
             pstm.setString(1, loan.getIdLoan());
@@ -75,37 +75,36 @@ public class LoanRepository {
         }
     }
  
-    public boolean update(Loan loan) {
-        String sql = "UPDATE loans SET id_client = ?, id_fee = ?, pay_day = ?, amount = ?, interest_rate = ?, term_months = ?, request_date = ?, approval_date = ?, status = ? WHERE id_loan = ?;";
+        public boolean update(Loan loan) {
+        String sql = "UPDATE prestamo SET id_cliente = ?, id_tipo_credito = ?, monto = ?, tasa_interes = ?, plazo_meses = ?, fecha_solicitud = ?, fecha_aprobacion = ?, estado = ? WHERE id_prestamo = ?;";
  
         try (PreparedStatement pstm = DataBaseConnection.getDataBaseConnection().prepareStatement(sql)) {
             pstm.setString(1, loan.getIdClient());
-            pstm.setString(2, loan.getIdClient());
-            pstm.setInt(3, loan.getidTypeCredit());
-            pstm.setDouble(4, loan.getAmount());
-            pstm.setInt(5, loan.getInterestRate());
-            pstm.setInt(6, loan.getThermMonths());
-            pstm.setDate(7, loan.getRequestDate() != null ? java.sql.Date.valueOf(loan.getRequestDate()) : null);
-            pstm.setDate(8, loan.getApprovalDate() != null ? java.sql.Date.valueOf(loan.getApprovalDate()) : null);
-            pstm.setString(9, loan.getStatus());
-            pstm.setString(10, loan.getIdLoan());
+            pstm.setInt(2, loan.getidTypeCredit());
+            pstm.setDouble(3, loan.getAmount());
+            pstm.setInt(4, loan.getInterestRate());
+            pstm.setInt(5, loan.getThermMonths());
+            pstm.setDate(6, loan.getRequestDate() != null ? java.sql.Date.valueOf(loan.getRequestDate()) : null);
+            pstm.setDate(7, loan.getApprovalDate() != null ? java.sql.Date.valueOf(loan.getApprovalDate()) : null);
+            pstm.setString(8, loan.getStatus());
+            pstm.setString(9, loan.getIdLoan());
  
             int affectedRows = pstm.executeUpdate();
             return affectedRows > 0;
         } catch (SQLException e) {
-            throw new RuntimeException("Error updating loan in database.", e);
+            throw new RuntimeException("Error actualizando prestamo en la database.", e);
         }
     }
  
     public boolean existsById(String idLoan) {
-        String sql = "SELECT id_loan FROM loans WHERE id_loan = ?;";
+        String sql = "SELECT id_prestamo FROM prestamo WHERE id_prestamo = ?;";
  
         try (PreparedStatement pstm = DataBaseConnection.getDataBaseConnection().prepareStatement(sql)) {
             pstm.setString(1, idLoan);
             ResultSet rs = pstm.executeQuery();
             return rs.next();
         } catch (SQLException e) {
-            throw new RuntimeException("Error validating loan existence.", e);
+            throw new RuntimeException("Error validando existencia de prestamo(s)", e);
         }
     }
-}
+}   
