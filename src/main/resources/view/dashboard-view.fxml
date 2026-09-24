@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../css/dashboard-design.css,@../css/button-design.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+
+    <left>
+        <VBox alignment="TOP_CENTER" prefHeight="720.0" prefWidth="240.0" spacing="10.0" styleClass="sidebar" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="64.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/logo.png" />
+                    </image>
+                </ImageView>
+
+                <Label styleClass="sidebar-title" text="Banco Sahur" />
+                <Label fx:id="lblRolActual" styleClass="sidebar-subtitle" text="Rol" />
+
+                <Region prefHeight="20.0" />
+
+                <Button fx:id="btnVerClientes" alignment="CENTER_LEFT" onAction="#handleVerClientes" prefWidth="204.0" styleClass="sidebar-button" text="Clientes" />
+                <Button fx:id="btnVerPrestamos" alignment="CENTER_LEFT" onAction="#handleVerPrestamos" prefWidth="204.0" styleClass="sidebar-button" text="Préstamos" />
+                <Button fx:id="btnVerUsuarios" alignment="CENTER_LEFT" onAction="#handleVerUsuarios" prefWidth="204.0" styleClass="sidebar-button" text="Usuarios" />
+
+                <Region VBox.vgrow="ALWAYS" />
+
+                <Hyperlink onAction="#handleCerrarSesion" styleClass="sidebar-subtitle" text="Cerrar sesión" />
+            </children>
+            <padding>
+                <Insets bottom="24.0" left="18.0" right="18.0" top="28.0" />
+            </padding>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox spacing="8.0" styleClass="dashboard-content" BorderPane.alignment="CENTER">
+            <children>
+                <Label styleClass="dashboard-title" text="Dashboard" />
+                <Label styleClass="dashboard-subtitle" text="Selecciona una opción del menú para comenzar." />
+            </children>
+            <padding>
+                <Insets bottom="24.0" left="28.0" right="28.0" top="24.0" />
+            </padding>
+        </VBox>
+    </center>
+
+</BorderPane>
